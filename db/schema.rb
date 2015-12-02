@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201233533) do
+ActiveRecord::Schema.define(version: 20151201234734) do
 
   create_table "charities", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "disease_id"
+    t.integer  "cod_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "charities", ["cod_id"], name: "index_charities_on_cod_id"
 
   create_table "cods", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(version: 20151201233533) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "cods", ["charity_id"], name: "index_cods_on_charity_id"
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -42,12 +46,18 @@ ActiveRecord::Schema.define(version: 20151201233533) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "country_cods", ["cod_id"], name: "index_country_cods_on_cod_id"
+  add_index "country_cods", ["country_id"], name: "index_country_cods_on_country_id"
+
   create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "charity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "donations", ["charity_id"], name: "index_donations_on_charity_id"
+  add_index "donations", ["user_id"], name: "index_donations_on_user_id"
 
   create_table "user_charities", force: :cascade do |t|
     t.boolean  "is_leader"
@@ -56,6 +66,9 @@ ActiveRecord::Schema.define(version: 20151201233533) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "user_charities", ["charity_id"], name: "index_user_charities_on_charity_id"
+  add_index "user_charities", ["user_id"], name: "index_user_charities_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

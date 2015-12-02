@@ -1,0 +1,2 @@
+class CodsController < ApplicationController
+end
