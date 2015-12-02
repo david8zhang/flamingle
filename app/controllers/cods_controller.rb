@@ -1,5 +1,5 @@
-class CODController < ApplicationController
+class CodsController < ApplicationController
 	def index
-		@cods = COD.all
+		@cods = Cod.all
 	end
 end
