@@ -15,4 +15,3 @@ class CharitiesController < ApplicationController
     	@charity = Charity.all
   	end
 end
-
