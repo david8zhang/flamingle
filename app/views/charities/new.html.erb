@@ -1,0 +1,8 @@
+<html>
+    <h2> Create a new Charity for <%= @cod.name %></h2>
+    <%= simple_form_for @charity do |c| %>
+        <%= c.text_field :name %>
+        <%= c.text_field :description %>
+        <%= c.button :submit %>
+    <% end %>
+</html>
