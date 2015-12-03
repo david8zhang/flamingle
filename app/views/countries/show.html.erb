@@ -1,6 +1,8 @@
 <h1><%= @country.name %></h1> (<%= @cod.name %>)
 <br>
 <br>
+<%= link_to("Create a new Charity", "/charities/new/" + @cod.id.to_s + "/" + @country.id.to_s) %>
+<br>
 <% @charities.each do |charity| %>
     <%= link_to(charity.name, "/charities/" + charity.id.to_s)%>
     <% total = 0 %>

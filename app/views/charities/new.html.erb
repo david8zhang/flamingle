@@ -10,5 +10,7 @@
         <%= c.text_field :description %>
         <br>
         <%= c.button :submit %>
+        <%= c.hidden_field :cod_id, value: @cod.id %>
+        <%= c.hidden_field :country_id, value: @country.id %>
     <% end %>
 </html>
