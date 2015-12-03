@@ -28,6 +28,9 @@ class CharitiesController < ApplicationController
 		@total_donations = 0
 		@charity.donations.each do |d|
 			@total_donations = @total_donations + d.amount
+
+    @donations = Donation.new
+    @donations = @charities.donations.order_by_created_at
 		end
 	end
 end

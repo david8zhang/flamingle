@@ -8,3 +8,12 @@
     <% end %>
     <br>
 <% end %>
+
+<div class="row">
+    <%= render 'donations/new' %>
+</div>
+<div class="row">
+  <div>
+    <%= render 'donations/index', donations: @donations %>
+  </div>
+</div>
