@@ -17,7 +17,12 @@
 
       var data = google.visualization.arrayToDataTable(gon.countrynames);
 
-      var options = {};
+      var options = {
+          colorAxis: {colors: ['#019de8', '#000000']},
+          backgroundColor: '#00FFFFFF',
+          datalessRegionColor: '#00FFFFFF',
+          defaultColor: '#00FFFFFF',
+        };
 
       var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
       google.visualization.events.addListener(chart, 'select', selectHandler);
