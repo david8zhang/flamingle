@@ -1,5 +1,9 @@
 <h1>Panacea</h1>
+
+<% if current_user == nil%>
 <h2><%= link_to('Sign up', new_user_registration_path) %>        <%= link_to('Log in', new_user_session_path) %></h2>
+<% end %>
+
 
 
 <% if current_user != nil%>
