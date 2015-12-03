@@ -1,3 +1,5 @@
 <%@cods.each do |cod|%>
-  <button><%= link_to cod.name, cod%></button>
+  <button class="cod"> <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>
+
+
