@@ -1,0 +1,9 @@
+<html>
+    <title>Panacea</title>
+    <h1> Welcome to Panacea </h1>
+    <h1><%= cod.name %></h1>
+    <% countries.each do |country| %>
+        <p><%= link_to country.name, country_path([cod_id: cod.id, country_id: country.id]) %> deathtoll:<%= country.country_cods.where(cod_id = cod.id).first.deathtoll%></p>
+
+    <% end %>
+</html>
