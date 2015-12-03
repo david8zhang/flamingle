@@ -24,5 +24,9 @@ class CharitiesController < ApplicationController
 
 	def show
 		@charity = Charity.find(params[:id])
+		@total_donations = 0
+		@charity.donations.each do |d|
+			@total_donations = @total_donations + d.amount
+		end
 	end
 end
