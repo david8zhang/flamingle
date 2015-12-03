@@ -1,7 +1,6 @@
 class CodsController < ApplicationController
   def index
-    @cods = Cod.all
-    @cod = Cod.find(params[:id])
+    @cods = Cod.all  
     @countries = Country.all
   end
 
