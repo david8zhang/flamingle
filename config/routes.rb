@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-    root to: 'countries#index'
+    root to: 'cods#index'
+    resources :cods
     devise_for :users
     resources :users
     resources :countries, :only => [:index, :show]
