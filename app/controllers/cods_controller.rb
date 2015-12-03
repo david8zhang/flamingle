@@ -1,6 +1,10 @@
 class CodsController < ApplicationController
+  def random
+     redirect_to cod_path(Cod.all.pluck(:id).sample)
+  end
+
   def index
-    @cods = Cod.all  
+    @cods = Cod.all
     @countries = Country.all
   end
 

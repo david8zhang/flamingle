@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    root to: 'cods#index'
+    root to: 'cods#random'
     resources :cods
     devise_for :users
     resources :users

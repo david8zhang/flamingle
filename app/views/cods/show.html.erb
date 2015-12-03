@@ -1,6 +1,6 @@
 <style>
 a:link {
-  color: #FFF;
+  color: #EEE;
   text-decoration: none;
 }
 a:visited {
@@ -17,6 +17,15 @@ a:hover{
 </style>
 
 <%= render 'countries/index', cod: @cod, countries: @countries %>
+<% if current_user == nil%>
+<h2><%= link_to('Sign up', new_user_registration_path) %>        <%= link_to('Log in', new_user_session_path) %></h2>
+<% end %>
+
+
+
+<% if current_user != nil%>
+	<h3><%= link_to "Your Profile", current_user %><h3>
+<% end %>
 
 <%@cods.each do |cod|%>
   <button class="cod"
