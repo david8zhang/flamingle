@@ -1,4 +1,5 @@
 <%= render 'countries/index', cod: @cod, countries: @countries %>
 <%@cods.each do |cod|%>
-  <button class="cod"> <%=link_to cod.name, cod_path%> </button>
+  <button class="cod"
+  style=background-color:<%="#"+(210 - (cod.country_cods.first.deathtoll/100 >= 80 ? 80 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%> > <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>
