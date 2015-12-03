@@ -1,1 +1,10 @@
-<%= @country%>
+<h1><%= @country.name %></h1>
+<em><%= @cod.name %></em>
+<% @charities.each do |charity| %>
+    <h3><%= charity.name %></h3>
+    <% total = 0 %>
+    <% charities.donations.each do |d| %>
+        <% total = total + d.amount %>
+    <% end %>
+    <em><%= total %></em>
+<% end %>
