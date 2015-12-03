@@ -1,24 +1,23 @@
 <style>
-a:link {
-  color: #FFF;
-  text-decoration: none;
-}
-a:visited {
-  color: #BBB;
-  text-decoration: none;
-}
-a:hover{
-  color: #FF0;
-  -webkit-transition: color .5s;
-}
-.cod {
-  border: 0;
-}
+    a:link {
+      color: #FFF;
+      text-decoration: none;
+    }
+    a:visited {
+      color: #BBB;
+      text-decoration: none;
+    }
+    a:hover{
+      color: #FF0;
+      -webkit-transition: color .5s;
+    }
+    .cod {
+      border: 0;
+    }
 </style>
 
 <%= render 'countries/index', cod: @cod, countries: @countries %>
 
 <%@cods.each do |cod|%>
-  <button class="cod"
-  style=background-color:<%="#"+(210 - (Math.log(cod.country_cods.map(&:deathtoll).reduce(:+),1.2).ceil)).to_s(16).upcase+"0000"%>> <%=link_to cod.name, cod_path(cod.id)%> </button>
+  <button class="cod"> <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>
