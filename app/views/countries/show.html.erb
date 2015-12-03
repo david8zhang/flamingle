@@ -1,1 +1,11 @@
-<%= @country%>
+<h1><%= @country.name %></h1> (<%= @cod.name %>)
+<br>
+<br>
+<% @charities.each do |charity| %>
+    <%= link_to(charity.name, "/charities/" + charity.id.to_s)%>
+    <% total = 0 %>
+    <% charity.donations.each do |d| %>
+        <% total = total + d.amount %>
+    <% end %>
+    <em>Total Raised: $<%= total %></em>
+<% end %>

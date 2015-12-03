@@ -1,43 +1,42 @@
 <html>
-<head>
-  <%= include_gon %>
-</head>
+    <head>
+      <%= include_gon %>
+    </head>
 
-<title>Panacea</title>
-<h1> Welcome to Panacea </h1>
-<h1><%= cod.name %></h1>
+    <title>Panacea</title>
+    <h1> Welcome to Panacea </h1>
+    <h1><%= cod.name %></h1>
 
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-google.load("visualization", "1", {packages:["geochart"]});
-google.setOnLoadCallback(drawRegionsMap);
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {packages:["geochart"]});
+    google.setOnLoadCallback(drawRegionsMap);
 
-function drawRegionsMap() {
+    function drawRegionsMap() {
 
-  var data = google.visualization.arrayToDataTable(gon.countrynames);
+      var data = google.visualization.arrayToDataTable(gon.countrynames);
 
-  var options = {};
+      var options = {};
 
-  var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-  google.visualization.events.addListener(chart, 'select', selectHandler);
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+      google.visualization.events.addListener(chart, 'select', selectHandler);
 
-  function selectHandler() {
-    var selection = chart.getSelection();
-    for (var i = 0; i < selection.length; i++) {
-      var item = selection[i];
-      if (item.row != null) {
-        var str = gon.links[[item.row]];
+      function selectHandler() {
+        var selection = chart.getSelection();
+        for (var i = 0; i < selection.length; i++) {
+          var item = selection[i];
+          if (item.row != null) {
+            var str = gon.links[[item.row]];
+          }
+
+        }
+        window.location =  str
       }
-
+      chart.draw(data, options);
     }
-    window.location =  str
-  }
-  chart.draw(data, options);
-}
 
-</script>
+    </script>
 
-  <div id="regions_div" style="width: 900px; height: 500px;"></div>
-
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
 </html>
