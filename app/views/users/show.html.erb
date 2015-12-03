@@ -15,7 +15,7 @@
 
         <h2>My charities:</h2>
         <% @charities.each do |charity| %>
-            <h2><%= charity.name %></h2>
+            <%= link_to(charity.name, "/charities/" + charity.id.to_s) %>
             <p><%= charity.description %></p>
         <% end %>
     </body>
