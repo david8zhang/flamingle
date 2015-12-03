@@ -15,7 +15,6 @@ class CodsController < ApplicationController
        gon.countrynames << [country.name,
          country.country_cods.find_or_create_by(cod_id: @cod.id).deathtoll]
        gon.links << country_path([cod_id: @cod.id, country_id: country.id])
-
     end
   end
 end
