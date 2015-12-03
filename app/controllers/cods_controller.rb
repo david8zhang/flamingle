@@ -6,7 +6,7 @@ class CodsController < ApplicationController
 
   def show
     @cods = Cod.all
-    @cod = Cod.find(params[:id])
+    @cod = Cod.find(params[:cod, :id])
     @countries = Country.all
   end
 end
