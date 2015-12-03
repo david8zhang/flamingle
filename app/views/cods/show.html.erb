@@ -1,6 +1,3 @@
-<%= render 'countries/index', cod: @cod, countries: @countries %>
-<div codshow>
-<%@cods.each do |cod|%>
 <style>
 a:link {
   color: #FFF;
@@ -10,16 +7,18 @@ a:visited {
   color: #BBB;
   text-decoration: none;
 }
+a:hover{
+  color: #FF0;
+  -webkit-transition: color .5s;
+}
 .cod {
   border: 0;
-  background: <%="#"+(16 + (cod.country_cods.first.deathtoll/100 >= 239 ? 239 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%>;
 }
+</style>
 
-.cod:hover {
-  background: #FF0;
-  -webkit-transition: background .5s;
-}</style>
-<%="#"+(16 + (cod.country_cods.first.deathtoll/100 >= 239 ? 239 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%>
-  <button class="cod"> <%=link_to cod.name, cod_path(cod.id)%> </button>
+<%= render 'countries/index', cod: @cod, countries: @countries %>
+
+<%@cods.each do |cod|%>
+  <button class="cod"
+  style=background-color:<%="#"+(210 - (cod.country_cods.first.deathtoll/100 >= 80 ? 80 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%>> <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>
-</codshow>
