@@ -29,5 +29,5 @@ a:hover{
 <% end %>
 
 <%@cods.each do |cod|%>
-  <button class="cod" style=background-color:<%="#"+(210 - (Math.log(cod.country_cods.map(&:deathtoll).reduce(:+),1.2).ceil)).to_s(16).upcase+"0000"%>> <%=link_to cod.name, cod_path(cod.id)%> </button>
+  <button class="cod" style=background-color:<%="#"+((100000 - (cod.country_cods.map(&:deathtoll).reduce(:+)))/1000).to_s(16).upcase+"0000"%>> <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>
