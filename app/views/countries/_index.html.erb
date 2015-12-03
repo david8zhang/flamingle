@@ -1,9 +1,49 @@
 <html>
+<head>
+<%= include_gon %>
+</head>
     <title>Panacea</title>
     <h1> Welcome to Panacea </h1>
     <h1><%= cod.name %></h1>
     <% countries.each do |country| %>
-        <p><%= link_to country.name, country_path([cod_id: cod.id, country_id: country.id]) %> deathtoll:<%= country.country_cods.where(cod_id = cod.id).first.deathtoll%></p>
+        <p><%= link_to country.name, country_path([cod_id: cod.id, country_id: country.id]) %> deathtoll:<%= country.country_cods.find_or_create_by(cod_id: cod.id).deathtoll%></p>
 
     <% end %>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+   <script type="text/javascript">
+     google.load("visualization", "1", {packages:["geochart"]});
+     google.setOnLoadCallback(drawRegionsMap);
+
+     function drawRegionsMap() {
+
+       var data = google.visualization.arrayToDataTable(gon.countrynames);
+
+       var options = {};
+
+       var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+       google.visualization.events.addListener(chart, 'select', selectHandler);
+
+  // The selection handler.
+  // Loop through all items in the selection and concatenate
+  // a single message from all of them.
+  function selectHandler() {
+    var selection = chart.getSelection();
+    for (var i = 0; i < selection.length; i++) {
+      var item = selection[i];
+      if (item.row != null) {
+      var str = gon.links[[item.row]];
+      }
+
+    }
+    window.location =  str
+  }
+       chart.draw(data, options);
+     }
+
+   </script>
+ <body>
+   <div id="regions_div" style="width: 900px; height: 500px;"></div>
+ </body>
+
 </html>
