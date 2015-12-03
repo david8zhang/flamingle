@@ -1,5 +1,25 @@
 <%= render 'countries/index', cod: @cod, countries: @countries %>
-
+<div codshow>
 <%@cods.each do |cod|%>
+<style>
+a:link {
+  color: #FFF;
+  text-decoration: none;
+}
+a:visited {
+  color: #BBB;
+  text-decoration: none;
+}
+.cod {
+  border: 0;
+  background: <%="#"+(16 + (cod.country_cods.first.deathtoll/100 >= 239 ? 239 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%>;
+}
+
+.cod:hover {
+  background: #FF0;
+  -webkit-transition: background .5s;
+}</style>
+<%="#"+(16 + (cod.country_cods.first.deathtoll/100 >= 239 ? 239 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%>
   <button class="cod"> <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>
+</codshow>
