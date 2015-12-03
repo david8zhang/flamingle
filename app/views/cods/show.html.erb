@@ -1,5 +1,33 @@
+<style>
+a:link {
+  color: #EEE;
+  text-decoration: none;
+}
+a:visited {
+  color: #BBB;
+  text-decoration: none;
+}
+a:hover{
+  color: #FF0;
+  -webkit-transition: color .5s;
+}
+.cod {
+  border: 0;
+}
+
+</style>
+
 <%= render 'countries/index', cod: @cod, countries: @countries %>
+<% if current_user == nil%>
+<h2><%= link_to('Sign up', new_user_registration_path) %>        <%= link_to('Log in', new_user_session_path) %></h2>
+<% end %>
+
+
+
+<% if current_user != nil%>
+	<h3><%= link_to "Your Profile", current_user %><h3>
+<% end %>
+
 <%@cods.each do |cod|%>
-  <button class="cod"
-  style=background-color:<%="#"+(210 - (cod.country_cods.first.deathtoll/100 >= 80 ? 80 : cod.country_cods.first.deathtoll/100)).to_s(16).upcase+"0000"%> > <%=link_to cod.name, cod_path(cod.id)%> </button>
+  <button class="cod" style=background-color:<%="#"+(210 - (Math.log(cod.country_cods.map(&:deathtoll).reduce(:+),1.2).ceil)).to_s(16).upcase+"0000"%>> <%=link_to cod.name, cod_path(cod.id)%> </button>
 <%end%>

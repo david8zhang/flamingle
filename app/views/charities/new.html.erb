@@ -1,10 +1,16 @@
 <html>
     <h2> Create a new Charity for <%= @cod.name %></h2>
     <%= simple_form_for @charity do |c| %>
-        Charity Name: <%= c.text_field :name %>
+        Charity Name:
         <br>
-        Description: <%= c.text_field :description %>
+        <%= c.text_field :name %>
+        <br>
+        Description:
+        <br>
+        <%= c.text_field :description %>
         <br>
         <%= c.button :submit %>
+        <%= c.hidden_field :cod_id, value: @cod.id %>
+        <%= c.hidden_field :country_id, value: @country.id %>
     <% end %>
 </html>
