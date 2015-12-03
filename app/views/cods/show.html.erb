@@ -1,6 +1,6 @@
 <%= render 'countries/index', cod: @cod, countries: @countries %>
-
+<%= @country_cod.all %>
 <%@cods.each do |cod|%>
-  <button class="cod"> <%=link_to cod.name, cod_path(cod.id)%> </button>
+  <button class="cod"> <%=link_to cod.name, cod_path%> </button>
 <%end%>
 
