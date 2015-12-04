@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151204001526) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "charities", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20151204001526) do
     t.integer  "donation_id"
   end
 
-  add_index "charities", ["cod_id"], name: "index_charities_on_cod_id"
-  add_index "charities", ["donation_id"], name: "index_charities_on_donation_id"
+  add_index "charities", ["cod_id"], name: "index_charities_on_cod_id", using: :btree
+  add_index "charities", ["donation_id"], name: "index_charities_on_donation_id", using: :btree
 
   create_table "cods", force: :cascade do |t|
     t.string   "name"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20151204001526) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "cods", ["charity_id"], name: "index_cods_on_charity_id"
+  add_index "cods", ["charity_id"], name: "index_cods_on_charity_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20151204001526) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "country_cods", ["cod_id"], name: "index_country_cods_on_cod_id"
-  add_index "country_cods", ["country_id"], name: "index_country_cods_on_country_id"
+  add_index "country_cods", ["cod_id"], name: "index_country_cods_on_cod_id", using: :btree
+  add_index "country_cods", ["country_id"], name: "index_country_cods_on_country_id", using: :btree
 
   create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
@@ -60,8 +63,8 @@ ActiveRecord::Schema.define(version: 20151204001526) do
     t.float    "amount",     default: 0.0
   end
 
-  add_index "donations", ["charity_id"], name: "index_donations_on_charity_id"
-  add_index "donations", ["user_id"], name: "index_donations_on_user_id"
+  add_index "donations", ["charity_id"], name: "index_donations_on_charity_id", using: :btree
+  add_index "donations", ["user_id"], name: "index_donations_on_user_id", using: :btree
 
   create_table "user_charities", force: :cascade do |t|
     t.boolean  "is_leader"
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 20151204001526) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_charities", ["charity_id"], name: "index_user_charities_on_charity_id"
-  add_index "user_charities", ["user_id"], name: "index_user_charities_on_user_id"
+  add_index "user_charities", ["charity_id"], name: "index_user_charities_on_charity_id", using: :btree
+  add_index "user_charities", ["user_id"], name: "index_user_charities_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -90,8 +93,8 @@ ActiveRecord::Schema.define(version: 20151204001526) do
     t.integer  "donation_id"
   end
 
-  add_index "users", ["donation_id"], name: "index_users_on_donation_id"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["donation_id"], name: "index_users_on_donation_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
