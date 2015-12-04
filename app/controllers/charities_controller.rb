@@ -30,7 +30,7 @@ class CharitiesController < ApplicationController
     puts @donations
     @total_donations = 0
     @charity.donations.each do |d|
-    @total_donations = @total_donations + d.amount
+    	@total_donations = @total_donations + d.amount
     end
     @cod = Cod.find(@charity.cod_id)
   end
