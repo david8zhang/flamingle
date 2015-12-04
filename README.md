@@ -11,9 +11,7 @@ Demo Link: http://serene-reef-7812.herokuapp.com/
 # Idea:  
 
 An application that allows users to create and host charities for a number of worldwide causes of death, and that visualizes worldwide 
-
 causes of death for website visitors. Users should be able to create charities, and donate to other's charities, and see their own 
-
 donations and charities that they manage
 
 
