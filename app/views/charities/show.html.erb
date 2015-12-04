@@ -1,12 +1,16 @@
-<h3><%= @charity.name %></h3> (<%= @cod.name %>)
+<h2 class="row"><%= @charity.name %></h2>
+<h5 class="description row"> Raising awareness and fundraising for victims of <%= @cod.name %></h5>
+<h5 class="description row"><%= @charity.description %></h5>
 <br>
-<em>Total Amount Raised: </em> $<%= @total_donations %>
 <br>
-make a new donation
+<h3 class="row">Total Amount Raised: $<%= @total_donations %></h3>
+<br>
+<h3 class="row">Make a new donation!</h3>
 <div class="row">
     <%= render 'donations/new' %>
 </div>
-all the others
+
+<h3 class="row">Donations made so far:</h3>
 <div class="row">
   <div>
     <%= render 'donations/index', donations: @donations %>
