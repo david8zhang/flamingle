@@ -1,0 +1,1 @@
+$('#posts').html("<%= escape_javascript(render 'donations/index', donations: @charity.donations.order(:created_at)) %>")

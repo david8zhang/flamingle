@@ -2,11 +2,13 @@
 <br>
 <em>Total Amount Raised: </em> $<%= @total_donations %>
 <br>
-<% @charity.donations.each do |d| %>
-    <% if d.user == nil %>
-        Anonymous donated $ <%= d.amount %>
-    <% else %>
-        <b><%= d.user.email[0..d.user.email.index('@')-1] %></b> donated $<%= d.amount %>
-    <% end %>
-    <br>
-<% end %>
+make a new donation
+<div class="row">
+    <%= render 'donations/new' %>
+</div>
+all the others
+<div class="row">
+  <div>
+    <%= render 'donations/index', donations: @donations %>
+  </div>
+</div>

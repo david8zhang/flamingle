@@ -18,15 +18,6 @@ a:hover{
 </style>
 
 <%= render 'countries/index', cod: @cod, countries: @countries %>
-<% if current_user == nil%>
-<h2><%= link_to('Sign up', new_user_registration_path) %>        <%= link_to('Log in', new_user_session_path) %></h2>
-<% end %>
-
-
-
-<% if current_user != nil%>
-	<h3><%= link_to "Your Profile", current_user %><h3>
-<% end %>
 
 <%@cods.each do |cod|%>
   <button class="cod" style=background-color:<%="#"+((100000 - (cod.country_cods.map(&:deathtoll).reduce(:+)))/1000).to_s(16).upcase+"0000"%>> <%=link_to cod.name, cod_path(cod.id)%> </button>
