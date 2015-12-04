@@ -5,12 +5,10 @@
     </head>
     <body>
         <h1>Email: <%= @user.email %></h1>
-        <h2>Donations:
-            <% if current_user.donations != nil %>
-                <%current_user.donations%>
-            <% else %>
-                0 $
-            <% end %>
+        <h2> My Donations:
+            <% @donations.each do |donation| %>
+            <div><%= donation.charity.name %>, $<%= donation.amount %> <%= donation.created_at %></div>
+            <%end%>
         </h2>
 
         <h2>My charities:</h2>
