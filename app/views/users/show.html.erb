@@ -1,20 +1,20 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <h1>Email: <%= @user.email %></h1>
-        <h2> My Donations:
-            <% @donations.each do |donation| %>
-            <div><%= donation.charity.name %>, $<%= donation.amount %> <%= donation.created_at %></div>
-            <%end%>
-        </h2>
+<body>
+    <h2 class="row">Email: <%= @user.email %></h2>
+    <div class="row">
+        <div class="large-8 columns">
+            <h3> My Donations:</h3>
+                <% @donations.each do |donation| %>
+                    <div class="donation row"> Donated $<%= donation.amount %> to <%= link_to donation.charity.name, donation.charity %> for <%= donation.charity.cod.name %>.</div>
+                <%end%>
+            </h2>
+        </div>
+        <div class="large-4 columns">
+            <h3>My charities:</h3>
+            <% @charities.each do |charity| %>
+                <%= link_to(charity.name, "/charities/" + charity.id.to_s) %>
+                <p> In support of <%= charity.cod.name %> victims</p>
+            <% end %>
+        </div>
+    </div>
+</body>
 
-        <h2>My charities:</h2>
-        <% @charities.each do |charity| %>
-            <%= link_to(charity.name, "/charities/" + charity.id.to_s) %>
-            <p><%= charity.description %></p>
-        <% end %>
-    </body>
-</html>

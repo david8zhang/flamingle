@@ -1,0 +1,13 @@
+  <% charities.each do |charity| %>
+      <div class="charity row">
+        <div class="large-6 columns">
+          <h3><%= link_to charity.name, charity%></h3>
+          <h5><%= charity.description %></h5>
+        </div>
+        <% total = 0 %>
+        <% charity.donations.each do |d| %>
+            <% total = total + d.amount %>
+        <% end %>
+        <div class="total large-6 columns">Total Raised: $<%= total %></div>
+      </div>
+  <% end %>

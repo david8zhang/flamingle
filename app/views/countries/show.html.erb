@@ -1,17 +1,11 @@
-<h1><%= @country.name %></h1> (<%= @cod.name %>)
-<br>
-<br>
-<% if current_user != nil %>
-    <%= link_to("Create a new Charity", "/charities/new/" + @cod.id.to_s + "/" + @country.id.to_s) %>
-<% else %>
-    <%= link_to("Sign in Create a Charity", "/users/sign_in") %>
-<% end %>
-<br>
-<% @charities.each do |charity| %>
-    <%= link_to(charity.name, "/charities/" + charity.id.to_s)%>
-    <% total = 0 %>
-    <% charity.donations.each do |d| %>
-        <% total = total + d.amount %>
-    <% end %>
-    <em>Total Raised: $<%= total %></em>
-<% end %>
+<div class="row">
+  <h2> Charities for <%= @cod.name %> in <%= @country.name %>:</h2>
+  <% if current_user != nil %>
+      <button><%= link_to("Create a new Charity", "/charities/new/" + @cod.id.to_s + "/" + @country.id.to_s) %></button>
+  <% else %>
+      <button><%= link_to("Sign in Create a Charity", "/users/sign_in") %>
+  <% end %></button>
+  <%= render "charities/index", charities: @charities %>
+</div>
+
+

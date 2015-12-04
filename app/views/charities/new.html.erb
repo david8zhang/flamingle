@@ -1,16 +1,18 @@
 <html>
-    <h2> Create a new Charity for <%= @cod.name %></h2>
-    <%= simple_form_for @charity do |c| %>
-        Charity Name:
-        <br>
-        <%= c.text_field :name %>
-        <br>
-        Description:
-        <br>
-        <%= c.text_field :description %>
-        <br>
-        <%= c.button :submit %>
-        <%= c.hidden_field :cod_id, value: @cod.id %>
-        <%= c.hidden_field :country_id, value: @country.id %>
-    <% end %>
+
+    <div class="row center">
+        <div class="large-6 columns center">
+            <h3> Create a new Charity for <%= @cod.name %> in @country.name.</h3>
+            <%= simple_form_for @charity do |c| %>
+                <h5>Charity Name:</h5>
+                <%= c.text_field :name %>
+                <h5>Description:</h5>
+                <%= c.text_field :description %>
+                <button><%= c.button :submit %></button>
+                <%= c.hidden_field :cod_id, value: @cod.id %>
+                <%= c.hidden_field :country_id, value: @country.id %>
+            <% end %>
+        </div>
+
+    </div>
 </html>

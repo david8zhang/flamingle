@@ -1,9 +1,9 @@
 <div>
-  <h3><strong>Make a Donation</strong></h3>
   <%= form_for [@charity, @donation], remote: true do |f| %>
+  <h5 class="amount"> Amount in dollars </h5>
     <div class="field">
-      $ <%= f.text_area :amount, placeholder: "Enter donation amount" %>
+      <%= f.text_area :amount, placeholder: "Enter donation amount in dollars" %>
     </div>
-    <%= f.submit "Make donation"%>
+    <button><%= f.submit "Make donation"%></button>
   <% end %>
 </div>

@@ -4,15 +4,9 @@
     </head>
 
     <title>Panacea</title>
-    <h1> Welcome to Panacea </h1>
-    <h1><%= cod.name %></h1>
-
-    <style type="text/css">
-      #regions_div path {
-      stroke-width:1; /* control the countries borders width */
-      stroke:#ffffff; /* choose a color for the border */
-      }
-    </style>
+    <div class="row">
+      <h5><%= cod.name %>. Deaths are per 100,000 people. </h5>
+    </div>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -49,5 +43,5 @@
 
     </script>
 
-    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+    <div id="regions_div" class="row collapse"></div>
 </html>
