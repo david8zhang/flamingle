@@ -1,6 +1,7 @@
-  <div class="" id="posts">
-  <h6> most recent posts </h6>
-    <% donations.each do |donation| %>
-      <%= render 'donations/donation', donation: donation %>
-    <% end %>
+  <div id="posts">
+
+      <% donations.each do |donation| %>
+        <%= render 'donations/donation', donation: donation %>
+      <% end %>
+
   </div>

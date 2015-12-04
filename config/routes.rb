@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :users
     resources :countries, :only => [:index, :show]
     get '/charities/new/:cod_id/:country_id', to: 'charities#new'
-    post 'charities', to: 'charities#create'
-    get '/charities/:id', to: 'charities#show'
-    get '/charities', to: 'charities#index'
+    resources :charities do
+      resources :donations
+    end
 end

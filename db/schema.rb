@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203090837) do
+ActiveRecord::Schema.define(version: 20151204001526) do
 
   create_table "charities", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20151203090837) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "country_id"
+    t.integer  "donation_id"
   end
 
   add_index "charities", ["cod_id"], name: "index_charities_on_cod_id"
+  add_index "charities", ["donation_id"], name: "index_charities_on_donation_id"
 
   create_table "cods", force: :cascade do |t|
     t.string   "name"
@@ -85,8 +87,10 @@ ActiveRecord::Schema.define(version: 20151203090837) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "donation_id"
   end
 
+  add_index "users", ["donation_id"], name: "index_users_on_donation_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

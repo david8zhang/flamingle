@@ -1,7 +1,6 @@
 <div>
   <h3><strong>Make a Donation</strong></h3>
   <%= form_for [@charity, @donation], remote: true do |f| %>
-    <!-- <%= render 'shared/error_messages', object: f.object %> -->
     <div class="field">
       $ <%= f.text_area :amount, placeholder: "Enter donation amount" %>
     </div>

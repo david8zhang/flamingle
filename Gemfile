@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Styling
+gem 'foundation-rails'
 
 gem 'gon'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

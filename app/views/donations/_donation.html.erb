@@ -1,2 +1,3 @@
-<div><%= donation.amount %></div>
-<div><%= donation.user %></div>
+<div id="donation-<%= donation.id %>">
+  <div><%= donation.user.email[0..donation.user.email.index('@')-1] %> donated $<%= donation.amount %> !</div>
+</div>
