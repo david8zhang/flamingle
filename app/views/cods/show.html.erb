@@ -1,6 +1,6 @@
 <%= render 'countries/index', cod: @cod, countries: @countries %>
 <div class="cods center">
     <% @cods.each do |cod|%>
-      <button class="cod center"> <%= link_to cod.name, cod_path %></button>
+      <button class="cod center"> <%= link_to(cod.name, "/cods/" + cod.id.to_s)%></button>
     <% end %>
 </div>
