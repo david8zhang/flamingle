@@ -1,9 +1,10 @@
 class DonationsController < ApplicationController
   def create
-  @charity = Charity.find(params[:charity_id])
-  puts Country.find(@charity);
-  @donation = @charity.donations.build(donation_params)
-  @donation.save
+      @charity = Charity.find(params[:charity_id])
+      puts Country.find(@charity);
+      @donation = @charity.donations.build(donation_params)
+      flash[:error] = new_charity.errors.full_messages.to_sentence
+      @donation.save
   end
 
   def destroy
